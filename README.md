@@ -1,0 +1,1 @@
+POC para o backend em .NET CORE 2.0
