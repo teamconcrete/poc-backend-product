@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\src\ViaUnica.Data\ViaUnica.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MongoDB\" />
+  </ItemGroup>
+
 </Project>

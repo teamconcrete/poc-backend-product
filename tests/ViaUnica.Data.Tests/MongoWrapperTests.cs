@@ -5,14 +5,14 @@ using Xunit;
 
 namespace ViaUnica.Data.Tests
 {
-    public class ProductRepositoryTests
+    public class MongoWrapperTests
     {
         private MockRepository _mockRepository;
         private Mock<MongoSettings> _mongoSettings;
         private Mock<IMongoClient> _mongoClient;
         private MongoWrapper _mongoWrapper;
 
-        public ProductRepositoryTests()
+        public MongoWrapperTests()
         {
             _mockRepository = new MockRepository(MockBehavior.Strict);
             _mongoSettings = _mockRepository.Create<MongoSettings>("some:connection", "database");
@@ -25,7 +25,7 @@ namespace ViaUnica.Data.Tests
         [Fact]
         public void GetDatabase_ShouldReturnSuccessfully()
         {
-            //TODO: Create a way to validate the database creation
+            //TODO: Find a way to validate the database creation
             var database = _mongoWrapper.GetDatabase();
         }
     }
