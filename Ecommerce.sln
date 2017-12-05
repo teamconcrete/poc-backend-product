@@ -15,11 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.IoC", "src\Ecomme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Domain", "src\Ecommerce.Domain\Ecommerce.Domain.csproj", "{C0193C53-362E-4D4F-B9AD-2E5304BA10A1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1EA1F44F-430D-4BBA-981B-83C526861E7E}"
-	ProjectSection(SolutionItems) = preProject
-		DockerFile = DockerFile
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Api", "src\Ecommerce.Api\Ecommerce.Api.csproj", "{5B0F4B44-965C-40F0-9A3C-796916B2AA90}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Core", "src\Ecommerce.Core\Ecommerce.Core.csproj", "{9044223C-FC67-4EC3-9470-785DA317A11B}"
@@ -28,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Application.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Tests.Helpers", "tests\Ecommerce.Tests.Helpers\Ecommerce.Tests.Helpers.csproj", "{0E616F96-3C65-4157-AC0E-747324E400A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Data.Tests", "tests\Ecommerce.Data.Tests\Ecommerce.Data.Tests.csproj", "{59038F21-25DB-4393-B5DB-B6E77833FD4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Data.Tests", "tests\Ecommerce.Data.Tests\Ecommerce.Data.Tests.csproj", "{59038F21-25DB-4393-B5DB-B6E77833FD4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
