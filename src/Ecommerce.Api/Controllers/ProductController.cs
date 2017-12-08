@@ -1,6 +1,7 @@
-﻿using Ecommerce.Application.Interfaces;
+﻿using AutoMapper;
+using Ecommerce.Api.Requests;
+using Ecommerce.Application.Interfaces;
 using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Web.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,14 @@ using System.Threading.Tasks;
 namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         IProductAppService _service;
 
         public ProductController(IProductAppService service)
         {
-            _service = service;
+            _service = service;   
+            
         }
 
         [HttpGet()]
@@ -35,7 +37,7 @@ namespace Ecommerce.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]ProductRequest value)
         {
-            var product = value.ConvertToModel();
+            var product = Mapper.Map<ProductRequest, Product>(value);
 
             await _service.CreateAsync(product);
 
@@ -46,15 +48,15 @@ namespace Ecommerce.Api.Controllers
         public async Task<IActionResult> Put(string id, [FromBody]ProductRequest value)
         {
             var guid = Guid.Parse(id);
-            var entity = value.ConvertToModel();
-            entity.Id = guid;
+            var product = Mapper.Map<ProductRequest, Product>(value);
+            product.Id = guid;
 
             var exists = await _service.GetAsync(guid);
 
             if (exists == null)
                 return NotFound();
 
-            await _service.UpdateAsync(entity);
+            await _service.UpdateAsync(product);
 
             return Ok();
         }
@@ -64,12 +66,12 @@ namespace Ecommerce.Api.Controllers
         {
             var guid = Guid.Parse(id);
 
-            var entity = await _service.GetAsync(guid);
+            var product = await _service.GetAsync(guid);
 
-            if (entity == null)
+            if (product == null)
                 return NotFound();
 
-            await _service.DeleteAsync(entity);
+            await _service.DeleteAsync(product);
 
             return Ok();
         }

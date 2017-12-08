@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Ecommerce.Api.Extensions;
 using Ecommerce.Domain.Web.Configurations;
 using Ecommerce.IoC;
+using Ecommerce.Api.Mapping;
 
 namespace Ecommerce.Api
 {
@@ -34,7 +35,7 @@ namespace Ecommerce.Api
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             _appSettings = services.GetAppSettings();
 
-            DependencyManager.Setup(services, _appSettings);  
+            DependencyManager.Setup(services, _appSettings);            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
