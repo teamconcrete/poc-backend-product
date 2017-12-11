@@ -4,6 +4,7 @@ using Ecommerce.Domain.Interfaces.Repository;
 using Ecommerce.Data.MongoDB;
 using Ecommerce.Domain.Web.Configurations;
 using MongoDB.Driver;
+using Ecommerce.Data.Mocks;
 
 namespace Ecommerce.IoC.Resolvers
 {
@@ -20,7 +21,7 @@ namespace Ecommerce.IoC.Resolvers
 
             services.AddSingleton<IMongoWrapper, MongoWrapper>();
 
-            services.AddScoped<IProductRepository, ProductRepository>();            
+            services.AddScoped<IProductRepository, ProductRepositoryMock>();            
         }
     }
 }

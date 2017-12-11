@@ -56,7 +56,7 @@ namespace Ecommerce.Data.Mocks
                     Id = id,
                     Name = $"Produto {i}",
                     Description = $"O Produto {i} tem as seguintes características, as seguintes dimensões e é sensacional.",
-                    ImageUrl = $"https://cdn.Ecommerce.com.br/images/{id}",
+                    ImageUrl = $"https://cdn.ecommerce.com.br/images/{id}",
                     LastModified = DateTime.Now                   
                 };
 
