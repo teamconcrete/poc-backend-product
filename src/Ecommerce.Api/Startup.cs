@@ -7,6 +7,9 @@ using Ecommerce.Api.Extensions;
 using Ecommerce.Domain.Web.Configurations;
 using Ecommerce.IoC;
 using Ecommerce.Api.Mapping;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace Ecommerce.Api
 {
@@ -30,12 +33,18 @@ namespace Ecommerce.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             _appSettings = services.GetAppSettings();
 
-            DependencyManager.Setup(services, _appSettings);            
+            services.Setup(_appSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

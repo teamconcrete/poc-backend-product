@@ -1,7 +1,6 @@
-﻿using AutoMapper;
-using Ecommerce.Api.Requests;
-using Ecommerce.Application.Interfaces;
+﻿using Ecommerce.Api.Requests;
 using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,12 +11,11 @@ namespace Ecommerce.Api.Controllers
     [Route("api/[controller]")]
     public class ProductController : BaseController
     {
-        IProductAppService _service;
+        IProductService _service;
 
-        public ProductController(IProductAppService service)
+        public ProductController(IProductService service)
         {
-            _service = service;   
-            
+            _service = service;               
         }
 
         [HttpGet()]
@@ -29,51 +27,17 @@ namespace Ecommerce.Api.Controllers
         [HttpGet("{id}")]
         public async Task<Product> Get(string id)
         {
-            var guid = Guid.Parse(id);
+            var idInt = int.Parse(id);
 
-            return await _service.GetAsync(guid);
+            return await _service.GetByIdAsync(idInt);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody]ProductRequest value)
+        [HttpGet("sku/{sku}")]
+        public async Task<Product> GetBySku(string sku)
         {
-            var product = Mapper.Map<ProductRequest, Product>(value);
+            var skuInt = int.Parse(sku);
 
-            await _service.CreateAsync(product);
-
-            return Ok();
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody]ProductRequest value)
-        {
-            var guid = Guid.Parse(id);
-            var product = Mapper.Map<ProductRequest, Product>(value);
-            product.Id = guid;
-
-            var exists = await _service.GetAsync(guid);
-
-            if (exists == null)
-                return NotFound();
-
-            await _service.UpdateAsync(product);
-
-            return Ok();
-        }
-        
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            var guid = Guid.Parse(id);
-
-            var product = await _service.GetAsync(guid);
-
-            if (product == null)
-                return NotFound();
-
-            await _service.DeleteAsync(product);
-
-            return Ok();
-        }
+            return await _service.GetBySkuAsync(skuInt);
+        }        
     }
 }

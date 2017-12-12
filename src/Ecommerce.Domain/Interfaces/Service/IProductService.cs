@@ -1,9 +1,15 @@
 ﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Interfaces.Service.Common;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Interfaces.Service
 {
-    public interface IProductService : IServiceAsync<Product>
+    public interface IProductService
     {
+        Task<IEnumerable<Product>> GetAllAsync();
+
+        Task<Product> GetByIdAsync(int id);
+
+        Task<Product> GetBySkuAsync(int sku);
     }
 }

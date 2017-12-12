@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mocks\ProductRepositoryMock.cs" />
     <Compile Remove="MongoDB\MongoSettings - Copy.cs" />
   </ItemGroup>
 
@@ -14,6 +15,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mocks\" />
   </ItemGroup>
 
 </Project>
